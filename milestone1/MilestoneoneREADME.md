@@ -15,6 +15,13 @@
  - Embeddings (using HuggingFace)
  - LlamaIndex (for indexing)
 
+This supports docs, pdfs and txt files.
 ----
+### New adds: 
+
+ Add Logger and Metadata here.
+
+ ### Next Step:
+ - I try to add User i/p for path (files or directories) so system can use that.
 
 I am currently experiencing with this approach, and maybe use other approach in future. Thank you have a fantastic day ahead :)

@@ -3,4 +3,5 @@ llama-index-vector-stores-qdrant
 sentence-transformers
 qdrant-client
 pypdf
+python-docx
 
