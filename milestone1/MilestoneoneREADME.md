@@ -14,7 +14,9 @@
  - Python
  - Embeddings (using HuggingFace)
  - LlamaIndex (for indexing)
+ - Conda Environment
 
+I use WSL (Ubuntu) here.
 This supports docs, pdfs and txt files.
 ----
 ### New adds: 
