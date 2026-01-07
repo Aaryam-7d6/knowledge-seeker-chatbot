@@ -1,7 +1,6 @@
 # Hello
 ----
 ## Milestone 1:
-<br>
  ### Milestone 1 : Document Ingestion & Indexing
  - Objective: Build a robust data pipeline for processing and indexing documents.
  - Tasks: Select and set up a vector database; develop scripts for document ingestion and text splitting; generate and store document embeddings.
