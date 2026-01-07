@@ -1,3 +1,13 @@
-# Qdrant storage
+# files to remove
 qdrant_storage/
 qdrant_storage/*
+.vscode/
+.vscode/*
+__pycache__/
+__pycache__/*
+.idea/
+.idea/*
+.ipynb_checkpoints/
+.ipynb_checkpoints/*
+.env
+
