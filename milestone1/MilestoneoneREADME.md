@@ -9,7 +9,7 @@
  - Milestone 1: The document ingestion and indexing pipeline is operational, and documents can be successfully embedded and stored in the vector database.
 ----
 ## Tooles use here:
- - Docker (for running database stably)
+ - Docker (for running database stably and Isolatedly)
  - Qdrant - Vector DB
  - Python
  - Embeddings (using HuggingFace)
