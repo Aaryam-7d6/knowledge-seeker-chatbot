@@ -2,8 +2,8 @@
 #COLLECTION_NAME = "knowledge_docs_4_search" # name 4 multi-qa-mpnet-base-dot-v1 model
 #COLLECTION_NAME = "knowledge_docs_bett_emb" # name 4 all-mpnet-base-v2 model
 #COLLECTION_NAME = "knowledge_docs_test_with_metadata_andlogs" # name 4 all-mpnet-base-v2 model with metadata and logs
-#COLLECTION_NAME = "knowledge_docs_test_with_ip_path0" # name 4 all-mpnet-base-v2 model with metadata and logs + user ip path #------ -ve failed to do that-----
-COLLECTION_NAME = "knowledge_docs_test_with_chat" # name 4 all-mpnet-base-v2 model with metadata and logs + user ip path
+COLLECTION_NAME = "knowledge_docs_test_with_ip_path0" # name 4 all-mpnet-base-v2 model with metadata and logs + user ip path #-> #------ -ve failed to do that-----
+#COLLECTION_NAME = "knowledge_docs_test_with_chat" # name 4 all-mpnet-base-v2 model with metadata and logs + user ip path #-> #----- note working because collection is not existing -----
 
 QDRANT_HOST = "localhost"
 QDRANT_PORT = 6333

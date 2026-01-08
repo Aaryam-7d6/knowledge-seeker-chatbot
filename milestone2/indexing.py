@@ -32,9 +32,7 @@ def build_index(data_dir: str):
     
     vector_store = get_vector_store()
 
-    storage_context = StorageContext.from_defaults(
-        vector_store=vector_store
-    )
+    storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
     logger.info("Building vector index")
     index = VectorStoreIndex.from_documents(documents=documents,storage_context=storage_context,embed_model=embed_model)
