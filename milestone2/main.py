@@ -1,4 +1,5 @@
 from rag import get_rag_engine
+import google.generativeai as genai
 
 def main():
     query_engine = get_rag_engine()
