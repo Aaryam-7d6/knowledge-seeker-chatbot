@@ -4,13 +4,14 @@ from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.response_synthesizers import get_response_synthesizer
 from embed_model import get_embedding_model
 from qdb_store import get_vector_store
-from llm_model import get_llm
+#from llm_model import get_llm
 from config import TOP_K
 #import google.generativeai as genai
+import llm_model as llmm
 
 def get_rag_engine():
     embed_model = get_embedding_model()
-    llm = get_llm()
+    llm = llmm.get_llm()
     vector_store = get_vector_store()
 
     index = VectorStoreIndex.from_vector_store(vector_store=vector_store,embed_model=embed_model)

@@ -3,6 +3,7 @@ from llama_index.llms.google_genai import GoogleGenAI
 from config import GEMINI_MODEL
 import os
 from dotenv import load_dotenv
+import llama_index.llms.google_genai
 #import google.generativeai as genai
 
 # Load the environment variables from .env file
@@ -22,8 +23,8 @@ llm = GoogleGenAI(
 )
 '''
 # Test the connection
-response = llm.complete("Hello, how are you?")
-print(response)
+#response = llm.complete("Hello, how are you?")
+#print(response)
 
 def get_llm():
     return GoogleGenAI(model=GEMINI_MODEL,api_key=os.environ.get('GEMINI_API_KEY'),temperature=0.2)

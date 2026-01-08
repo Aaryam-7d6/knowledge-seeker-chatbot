@@ -16,4 +16,5 @@ EMBED_MODEL_NAME = "sentence-transformers/all-mpnet-base-v2" # better embaddings
 TOP_K = 6
 
 # Gemini
-GEMINI_MODEL = "models/gemini-1.5-flash"
+#GEMINI_MODEL = "models/gemini-1.5-flash" #not working...
+GEMINI_MODEL = "gemini-1.5-flash"
