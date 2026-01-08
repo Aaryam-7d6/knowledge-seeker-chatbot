@@ -5,9 +5,19 @@ A RAG-based conversational AI for knowledge seekers and autodidactic learners, b
 Project Title : AI Based Document Search and Knowledge Retrieval with Conversational Interface
 
 -----
+
 ## Hello,World !!!
 I am an Intern at Infosys Springboard, under Infosys Springboard Virtual Internship 6.0 Programm.
 I have a Project and this repo is part of my journey and working at internship; Stay tune for updates.
 Thank you for your precious time and have a fantastic time ahead. :) 
 
+### Note:
+ - "Dockerr" and "qdrant_storage" must be in same file, if you move them to another location, if not then your colloctions are not appering in list.
+ - For Windows users rename it as "name.ps1". I use Ubuntu (Linux) therefore some things might be differnt and need changes.
+ - for any have doubt you can connect me.
+ - Please feel free to share your suggestions for improvement.
 
+
+Thank you, Have a Fantastic day ahed :)
+
+-----
