@@ -1,10 +1,10 @@
-#from rag import get_rag_engine
+from rag import get_rag_engine
 #import google.generativeai as genai
 import rag
 
 def main():
-    #query_engine = get_rag_engine()
-    query_engine = rag.get_rag_engine()
+    query_engine = get_rag_engine()
+    #query_engine = rag.get_rag_engine()
 
     print("\nRAG system ready. Ask a question:\n")
 
@@ -27,4 +27,5 @@ def main():
         print("\n" + "-"*50)
 
 if __name__ == "__main__":
+    
     main()

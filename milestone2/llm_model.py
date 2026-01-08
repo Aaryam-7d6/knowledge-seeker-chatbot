@@ -1,10 +1,11 @@
 #from llama_index.llms.gemini import Gemini
-from llama_index.llms.google_genai import GoogleGenAI
+#from llama_index.llms.google_genai import GoogleGenAI
 from config import GEMINI_MODEL
 import os
 from dotenv import load_dotenv
 import llama_index.llms.google_genai
 #import google.generativeai as genai
+from llama_index.llms.google_genai import GoogleGenAI
 
 # Load the environment variables from .env file
 load_dotenv()
@@ -16,12 +17,12 @@ load_dotenv()
 
 
 # Initialize with the new class
-'''
-llm = GoogleGenAI(
-    model="gemini-1.5-flash",  # Note: The 'models/' prefix is often handled automatically now
-    api_key="YOUR_API_KEY"
-)
-'''
+
+#llm = GoogleGenAI(
+    #model="gemini-1.5-flash",  # Note: The 'models/' prefix is often handled automatically now
+    #api_key="YOUR_API_KEY"
+#)
+
 # Test the connection
 #response = llm.complete("Hello, how are you?")
 #print(response)
