@@ -1,6 +1,6 @@
 from embed_model import get_embedding_model
 from qdb_store import get_vector_store
-import google.generativeai as genai
+#import google.generativeai as genai
 
 def inspect_vectors():
     vector_store = get_vector_store()

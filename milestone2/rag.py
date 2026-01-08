@@ -6,7 +6,7 @@ from embed_model import get_embedding_model
 from qdb_store import get_vector_store
 from llm_model import get_llm
 from config import TOP_K
-import google.generativeai as genai
+#import google.generativeai as genai
 
 def get_rag_engine():
     embed_model = get_embedding_model()

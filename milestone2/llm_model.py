@@ -3,7 +3,7 @@ from llama_index.llms.google_genai import GoogleGenAI
 from config import GEMINI_MODEL
 import os
 from dotenv import load_dotenv
-import google.generativeai as genai
+#import google.generativeai as genai
 
 # Load the environment variables from .env file
 load_dotenv()
