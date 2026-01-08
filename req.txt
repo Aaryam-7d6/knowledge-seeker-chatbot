@@ -4,4 +4,7 @@ sentence-transformers
 qdrant-client
 pypdf
 python-docx
-
+python-dotenv
+streamlit
+google-genai
+llama-index-llms-google-genai
