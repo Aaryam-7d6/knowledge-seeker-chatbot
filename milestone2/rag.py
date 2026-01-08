@@ -1,7 +1,7 @@
 from llama_index.core import VectorStoreIndex
 from llama_index.core.query_engine import RetrieverQueryEngine
 from llama_index.core.retrievers import VectorIndexRetriever
-from llama_index.core.response_synthesizers import ResponseSynthesizer
+from llama_index.core.response_synthesizers import get_response_synthesizer
 from embed_model import get_embedding_model
 from qdb_store import get_vector_store
 from llm_model import get_llm
@@ -16,7 +16,7 @@ def get_rag_engine():
 
     retriever = VectorIndexRetriever(index=index,similarity_top_k=TOP_K)
 
-    response_synthesizer = ResponseSynthesizer.from_args(llm=llm,response_mode="compact")
+    response_synthesizer = get_response_synthesizer(llm=llm,response_mode="compact")
 
     query_engine = RetrieverQueryEngine(retriever=retriever,response_synthesizer=response_synthesizer)
 
