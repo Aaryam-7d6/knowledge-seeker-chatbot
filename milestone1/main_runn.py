@@ -3,6 +3,9 @@ from logger import logger
 from qdrant_client import QdrantClient
 import config
 
+import os
+os.environ['HTT_TIMEOUT'] = '100'  # Increase timeout to 100 seconds
+
 def main():
     logger.info("Starting document ingestion & indexing")
     #print(" Starting document ingestion & indexing... ")
