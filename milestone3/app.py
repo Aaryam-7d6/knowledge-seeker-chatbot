@@ -2,15 +2,14 @@ import streamlit as st
 from indexing import build_index
 from rag_eng import get_rag_engine
 from summary_eng import generate_document_summary
-from utils.file-handl import save_uploaded_file
+from utils.file_handl import save_uploaded_file
 
-st.set_page_config(
-    page_title="KnowledgeSeeker",
-    layout="wide"
-)
+st.set_page_config(page_title="KnowledgeSeeker",layout="wide")
 
 st.title(" KnowledgeSeeker ")
-st.caption("A RAG-based conversational AI for knowledge seekers and autodidactic learners. NotebookLM-inspired Document Intelligence System")
+st.caption("A RAG-based conversational AI for knowledge seekers and autodidactic learners.")
+st.caption("NotebookLM-inspired Document Intelligence System.")
+
 
 # --- Sidebar ---
 st.sidebar.header("Document Panel")
