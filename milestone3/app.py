@@ -40,7 +40,7 @@ if st.sidebar.button("Generate Summary"):
         st.sidebar.write(summary)
 
 # --- Main Chat Area ---
-st.subheader("?? Ask Questions ??")
+st.subheader(f"Ask Questions because Questions are Welcomed here :)")
 
 query = st.text_input("Ask a question based on uploaded documents:")
 
