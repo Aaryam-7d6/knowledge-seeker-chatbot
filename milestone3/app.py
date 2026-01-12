@@ -2,6 +2,7 @@ import streamlit as st
 from indexing import build_index
 from rag_eng import get_rag_engine
 from summary_eng import generate_document_summary
+from search import get_query_engine
 from utils.file_handl import save_uploaded_file
 
 st.set_page_config(page_title="KnowledgeSeeker",layout="wide")
@@ -50,12 +51,21 @@ if creativity := st.session_state.get("creativity"):
 if top_k := st.session_state.get("top_k"):
     from config import TOP_K
     TOP_K = top_k
+    
+search_mode = st.selectbox(
+    "Search Mode",
+    ["hybrid", "vector", "keyword"],
+    index=0
+)
+
 
 query = st.text_input("Ask a question based on uploaded documents:")
 
+query_engine = get_query_engine(search_mode)
 
 if query:
     query_engine = get_rag_engine()
+    
 
     with st.spinner("Thinking..."):
         response = query_engine.query(query)

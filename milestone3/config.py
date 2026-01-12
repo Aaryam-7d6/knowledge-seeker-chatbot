@@ -18,6 +18,9 @@ TOP_K = 6
 # Temperature for LLM responses:
 TEMPERATURE = 0.5
 
+#seaech mode default:
+SEARCH_MODE = "hybrid"  # Options: "vector", "keyword", "hybrid"
+
 # Gemini
 #GEMINI_MODEL = "models/gemini-1.5-flash" #not working...
 #GEMINI_MODEL = "gemini-1.5-flash" #not working..
