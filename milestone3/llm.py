@@ -1,6 +1,6 @@
 #from llama_index.llms.gemini import Gemini
 #from llama_index.llms.google_genai import GoogleGenAI
-from config import GEMINI_MODEL
+from config import GEMINI_MODEL, TEMPERATURE
 import os
 from dotenv import load_dotenv
 import llama_index.llms.google_genai
@@ -25,4 +25,4 @@ load_dotenv()
 #print(response)
 
 def get_llm():
-    return GoogleGenAI(model=GEMINI_MODEL,api_key=os.environ.get('GEMINI_API_KEY'),temperature=0.2)
+    return GoogleGenAI(model=GEMINI_MODEL,api_key=os.environ.get('GEMINI_API_KEY'),temperature=TEMPERATURE)

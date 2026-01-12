@@ -41,8 +41,18 @@ if st.sidebar.button("Generate Summary"):
 
 # --- Main Chat Area ---
 st.subheader(f"Ask Questions because Questions are Welcomed here :)")
+st.slider("Adjust Response Creativity aka the Temperature", 0.0,2.0, 0.5, key="creativity")
+st.slider("Adjust the Top-K",5,10,6,key="top_k")
+
+if creativity := st.session_state.get("creativity"):
+    from config import TEMPERATURE
+    TEMPERATURE = creativity
+if top_k := st.session_state.get("top_k"):
+    from config import TOP_K
+    TOP_K = top_k
 
 query = st.text_input("Ask a question based on uploaded documents:")
+
 
 if query:
     query_engine = get_rag_engine()

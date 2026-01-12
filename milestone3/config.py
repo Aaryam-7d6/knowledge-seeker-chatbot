@@ -15,6 +15,9 @@ EMBED_MODEL_NAME = "sentence-transformers/all-mpnet-base-v2" # better embaddings
 # Retrieval config
 TOP_K = 6
 
+# Temperature for LLM responses:
+TEMPERATURE = 0.5
+
 # Gemini
 #GEMINI_MODEL = "models/gemini-1.5-flash" #not working...
 #GEMINI_MODEL = "gemini-1.5-flash" #not working..
