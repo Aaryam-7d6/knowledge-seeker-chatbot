@@ -8,3 +8,5 @@ python-dotenv
 streamlit
 google-genai
 llama-index-llms-google-genai
+llama-index-retrievers-bm25
+
