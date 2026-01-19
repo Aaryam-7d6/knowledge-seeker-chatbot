@@ -3,7 +3,10 @@ from indexing import build_index
 from rag_eng import get_rag_engine
 from summary_eng import generate_document_summary
 from search import get_query_engine
+#from indexing import build_index
 from utils.file_handl import save_uploaded_file
+import config
+import os
 
 st.set_page_config(page_title="KnowledgeSeeker",layout="wide")
 
@@ -21,15 +24,42 @@ uploaded_files = st.sidebar.file_uploader(
     accept_multiple_files=True
 )
 
+# os.makedirs(DATA_DIR, exist_ok=True)
+
+# if uploaded_files is not None:
+#     for uploaded_file in uploaded_files:
+#         file_path = os.path.join(DATA_DIR, uploaded_file.name)
+#         with open(file_path, "wb") as f:
+#             f.write(uploaded_file.getbuffer())
+
+#         st.success(f"Uploaded {uploaded_files.name}")
+if uploaded_files:
+    for uploaded_file in uploaded_files:
+        file_path = os.path.join(config.DATA_DIR, uploaded_file.name)
+
+        with open(file_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+
+        #st.success(f"Uploaded {uploaded_file.name}")
+        st.success(f"Uploaded {uploaded_file.name}")
+
+
+
+# if st.sidebar.button("Index Documents"):
+#     if uploaded_files:
+#         for file in uploaded_files:
+#             save_uploaded_file(file)
+
+#         with st.spinner("Indexing documents..."):
+#             #build_index(data_dir="data/uploads")
+            
+#             #build_index(data_dir="./storage")  # to index any previously stored docs
+#             st.sidebar.success("Documents indexed successfully!")
+
 if st.sidebar.button("Index Documents"):
-    if uploaded_files:
-        for file in uploaded_files:
-            save_uploaded_file(file)
-
-        with st.spinner("Indexing documents..."):
-            build_index(data_dir="data/uploads")
-
-        st.sidebar.success("Documents indexed successfully!")
+    with st.spinner("Indexing documents..."):
+        build_index(config.DATA_DIR)
+    st.success("Indexing completed")
 
 # --- Sidebar Summary ---
 st.sidebar.markdown("---")
@@ -52,26 +82,44 @@ if top_k := st.session_state.get("top_k"):
     from config import TOP_K
     TOP_K = top_k
     
+#search_mode = st.selectbox("Search Mode",["hybrid", "vector", "keyword"],index=0)
+search_options = ["hybrid", "vector", "keyword"]
+default_index = search_options.index(config.SEARCH_MODE) if config.SEARCH_MODE in search_options else 0
+
 search_mode = st.selectbox(
     "Search Mode",
-    ["hybrid", "vector", "keyword"],
-    index=0
+    search_options,
+    index=default_index
 )
+
+if not os.path.exists(os.path.join(config.STORAGE_DIR, "docstore.json")):
+    st.warning("Please upload and index documents first.")
+    st.stop()
 
 
 query = st.text_input("Ask a question based on uploaded documents:")
 
-query_engine = get_query_engine(search_mode)
+
+#query_engine = get_query_engine(search_mode)
 
 if query:
-    query_engine = get_rag_engine()
+    #query_engine = get_rag_engine()
+    query_engine = get_query_engine(search_mode)
     
 
     with st.spinner("Thinking..."):
+        #response = query_engine.query(query)
+        #
+        # response = query_engine.retrieve(query)
+        #st.write(query_engine)
+        #response = query_engine.retrieve(query)
         response = query_engine.query(query)
 
+
+        
     st.markdown("### Answer")
     st.write(response.response)
+    #st.write(query_engine)
 
     st.markdown("### Sources")
     for node in response.source_nodes:

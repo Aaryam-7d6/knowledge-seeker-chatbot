@@ -5,6 +5,7 @@
 COLLECTION_NAME = "knowledge_docs_test_with_ip_path0" # name 4 all-mpnet-base-v2 model with metadata and logs + user ip path #-> #------ -ve failed to do that-----
 #COLLECTION_NAME = "knowledge_docs_test_with_chat" # name 4 all-mpnet-base-v2 model with metadata and logs + user ip path #-> #----- note working because collection is not existing -----
 
+#quedrent connection config
 QDRANT_HOST = "localhost"
 QDRANT_PORT = 6333
 
@@ -25,3 +26,10 @@ SEARCH_MODE = "hybrid"  # Options: "vector", "keyword", "hybrid"
 #GEMINI_MODEL = "models/gemini-1.5-flash" #not working...
 #GEMINI_MODEL = "gemini-1.5-flash" #not working..
 GEMINI_MODEL = "models/gemini-2.5-flash" # working...
+
+#data dirs:
+#PERSIST_DIR = "./storage"
+DATA_DIR = "./data"
+STORAGE_DIR = PERSIST_DIR = "./storage"
+
+#AsyncQdrantClient = 
