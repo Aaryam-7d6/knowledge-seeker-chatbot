@@ -26,6 +26,7 @@ SEARCH_MODE = "hybrid"  # Options: "vector", "keyword", "hybrid"
 #GEMINI_MODEL = "models/gemini-1.5-flash" #not working...
 #GEMINI_MODEL = "gemini-1.5-flash" #not working..
 GEMINI_MODEL = "models/gemini-2.5-flash" # working...
+#GEMINI_MODEL = "models/gemini-2.5-flash-lite" # if limit exceed then try this lite version.
 
 #data dirs:
 #PERSIST_DIR = "./storage"
