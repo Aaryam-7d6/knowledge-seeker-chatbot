@@ -15,11 +15,25 @@ from rag_eng import load_index_from_storage, get_rag_engine,load_index
 import config
 import os
 from llama_index.core.retrievers import QueryFusionRetriever
+import streamlit as st
+from llama_index.core.chat_engine import ContextChatEngine
+from llama_index.core.query_engine import RetrieverQueryEngine
+
+#from rag_eng import load_index
 
 
 Settings.llm = get_llm()
 Settings.embed_model = get_embedding_model()
 Settings.node_parser = SentenceSplitter(chunk_size=512,chunk_overlap=51)
+
+#if "memory" not in st.session_state:
+    #st.session_state.memory = ChatMemoryBuffer.from_defaults(token_limit=2006)
+    
+from llama_index.core.memory import ChatMemoryBuffer
+
+memory = ChatMemoryBuffer.from_defaults(token_limit=1500)
+
+
 
 # def load_index():
 #     storage_context = StorageContext.from_defaults(persist_dir="./storage")
@@ -92,6 +106,7 @@ docstore = SimpleDocumentStore()
 docstore.add_documents(docs)
 #-- --
 
+# for more information visit : https://developers.llamaindex.ai/python/examples/retrievers/bm25_retriever/ for BM25Retriever
 
 def get_query_engine(search_mode=SEARCH_MODE):
     
@@ -134,20 +149,45 @@ def get_query_engine(search_mode=SEARCH_MODE):
         
         fusion = QueryFusionRetriever(
             retrievers=[vector_retriever, bm25_retriever],
-            similarity_top_k=TOP_K,
+            similarity_top_k=TOP_K
         )
 
-        return RetrieverQueryEngine.from_args(fusion)
+        return RetrieverQueryEngine.from_args(fusion, memory=st.session_state.memory)
 
     else:
         raise ValueError("Invalid search mode")
 
-    response_synthesizer = get_response_synthesizer(
-        llm=Settings.llm,
-        response_mode="compact"
-    ) #, num_queries=1 -- u can add this param if needed
+    # response_synthesizer = get_response_synthesizer(
+    #     llm=Settings.llm,
+    #     response_mode="compact"
+    # ) #, num_queries=1 -- u can add this param if needed
 
-    return RetrieverQueryEngine(
+    # return RetrieverQueryEngine(
+    #     retriever=retriever,
+    #     response_synthesizer=response_synthesizer
+    #     memory=st.session_state.memory
+    # )
+
+    # 🔹 Build base query engine
+    base_engine = RetrieverQueryEngine.from_args(
+    #RetrieverQueryEngine.from_args(
         retriever=retriever,
-        response_synthesizer=response_synthesizer
+        llm=Settings.llm
     )
+
+    # 🔹 Wrap it with chat engine (THIS enables memory + follow-ups)
+    # use https://developers.llamaindex.ai/python/examples/chat_engine/chat_engine_context/ for more information
+    #chat_engine = ContextChatEngine.from_defaults(
+    return ContextChatEngine.from_defaults(
+        query_engine=base_engine,
+        retriever=retriever,
+        #memory=st.session_state.memory,
+        memory=memory,
+        chat_mode="context",
+        #query = query_engine.query,
+        #query = query_engine
+        query = base_engine.query
+        #query = base_engine
+    )
+
+    #return chat_engine

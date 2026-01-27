@@ -7,6 +7,17 @@ from search import get_query_engine
 from utils.file_handl import save_uploaded_file
 import config
 import os
+#from llama_index.core.memory import ChatMemoryBuffer
+
+
+# for me information visit: #https://developers.llamaindex.ai/python/examples/agent/memory/chat_memory_buffer/
+
+from llama_index.core.memory import ChatMemoryBuffer
+
+memory = ChatMemoryBuffer.from_defaults(token_limit=1500)
+
+if memory not in st.session_state:
+    st.session_state.memory = ChatMemoryBuffer.from_defaults(token_limit = 1500)
 
 st.set_page_config(page_title="KnowledgeSeeker",layout="wide")
 
@@ -33,6 +44,7 @@ uploaded_files = st.sidebar.file_uploader(
 #             f.write(uploaded_file.getbuffer())
 
 #         st.success(f"Uploaded {uploaded_files.name}")
+
 if uploaded_files:
     for uploaded_file in uploaded_files:
         file_path = os.path.join(config.DATA_DIR, uploaded_file.name)
@@ -42,7 +54,6 @@ if uploaded_files:
 
         #st.success(f"Uploaded {uploaded_file.name}")
         st.success(f"Uploaded {uploaded_file.name}")
-
 
 
 # if st.sidebar.button("Index Documents"):
@@ -99,8 +110,20 @@ if not os.path.exists(os.path.join(config.STORAGE_DIR, "docstore.json")):
 
 query = st.text_input("Ask a question based on uploaded documents:")
 
+if query:
+    with st.chat_message("user"):
+        st.write(query)
+
+    #response = query_engine.query(user_query)
+
+
+# i use "Using Standalone" here, for me information visit: #https://developers.llamaindex.ai/python/examples/agent/memory/chat_memory_buffer/
+
+
+
 
 #query_engine = get_query_engine(search_mode)
+
 
 if query:
     #query_engine = get_rag_engine()
@@ -113,12 +136,13 @@ if query:
         # response = query_engine.retrieve(query)
         #st.write(query_engine)
         #response = query_engine.retrieve(query)
-        response = query_engine.query(query)
+        # response = query_engine.query(query)
+        response = query_engine.chat(query)
 
-
-        
-    st.markdown("### Answer")
-    st.write(response.response)
+        with st.chat_message("assistant"):
+            #st.write(response.response)
+            st.markdown("### Answer")
+            st.write(response.response)
     #st.write(query_engine)
 
     st.markdown("### Sources")
@@ -127,3 +151,36 @@ if query:
             f"- **{node.metadata.get('file_name', 'unknown')}** "
             f"(score: `{node.score:.3f}`)"
         )
+
+
+
+# from llama_index.core.llms import ChatMessage
+
+# chat_history = [
+#     ChatMessage(role="user", content=query),
+#     ChatMessage(role="assistant", content=response.response),
+# ]
+
+# # put a list of messages
+# memory.put_messages(chat_history)
+
+# # put one message at a time
+# # memory.put_message(chat_history[0])
+
+# # Get the last X messages that fit into a token limit
+# history = memory.get()
+
+# # Get all messages
+# all_history = memory.get_all()
+
+# ## clear the memory
+# #memory.reset()
+
+# st.markdown("---")
+# st.markdown("### Chat History")
+# # for msg in all_history:
+# #     st.markdown(f"**{msg.role.capitalize()}**: {msg.content}")
+# st.write(history)
+
+# st.write("#### Full Chat History:")
+# st.write(all_history)
