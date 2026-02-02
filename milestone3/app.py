@@ -30,8 +30,8 @@ st.caption("NotebookLM-inspired Document Intelligence System.")
 st.sidebar.header("Document Panel")
 
 uploaded_files = st.sidebar.file_uploader(
-    "Upload PDF, TXT, DOCX",
-    type=["pdf", "txt", "docx"],
+    "Upload PDF, TXT, DOCX, MD files",
+    type=["pdf", "txt", "docx", "md"],
     accept_multiple_files=True
 )
 
@@ -125,7 +125,7 @@ if query:
 #query_engine = get_query_engine(search_mode)
 
 
-if query:
+#if query:
     #query_engine = get_rag_engine()
     query_engine = get_query_engine(search_mode)
     

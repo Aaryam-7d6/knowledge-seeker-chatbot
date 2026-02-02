@@ -52,6 +52,8 @@ from llama_index.vector_stores.qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
 from config import DATA_DIR, STORAGE_DIR, COLLECTION_NAME
 import os
+import config
+from qdb import get_vector_store
 
 def build_index(data_dir):
     documents = SimpleDirectoryReader(data_dir).load_data()

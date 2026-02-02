@@ -146,13 +146,40 @@ def get_query_engine(search_mode=SEARCH_MODE):
         #     similarity_top_k=TOP_K,
         #     num_queries=1
         # )
-        
+        # from docs > https://developers.llamaindex.ai/python/examples/retrievers/simple_fusion/
         fusion = QueryFusionRetriever(
             retrievers=[vector_retriever, bm25_retriever],
-            similarity_top_k=TOP_K
+            similarity_top_k=TOP_K,
+            num_queries=1,
+            use_async=True
+            #memory=st.session_state.memory
         )
+        response_synthesizer = get_response_synthesizer(
+            llm=Settings.llm,
+            response_mode="compact"
+        ) #, num_queries=1 -- u can add this param if needed
+        # return RetrieverQueryEngine(
+            #     retriever=retriever,
+            #     response_synthesizer=response_synthesizer
+            #     memory=st.session_state.memory
+        # )
+        
 
-        return RetrieverQueryEngine.from_args(fusion, memory=st.session_state.memory)
+        be1 = RetrieverQueryEngine.from_args(fusion,response_synthesizer=response_synthesizer) #memory=memory,llm=Settings.llm,response_mode="compact") #llm and response_model i copy here from the base_engine below
+        #just user seer logic for solving the issue name "'RetrieverQueryEngine' object has no attribute 'chat'", do some copy past from below code.
+        return ContextChatEngine.from_defaults(
+        query_engine=be1,
+        retriever=fusion,
+        #memory=st.session_state.memory,
+        memory=memory,
+        chat_mode="context",
+        #query = query_engine.query,
+        #query = query_engine
+        query = be1.query
+        #query = base_engine
+    )
+        #return RetrieverQueryEngine.from_args(fusion)
+
 
     else:
         raise ValueError("Invalid search mode")
@@ -168,14 +195,16 @@ def get_query_engine(search_mode=SEARCH_MODE):
     #     memory=st.session_state.memory
     # )
 
-    # 🔹 Build base query engine
+    # Build base query engine
     base_engine = RetrieverQueryEngine.from_args(
     #RetrieverQueryEngine.from_args(
         retriever=retriever,
-        llm=Settings.llm
+        llm=Settings.llm,
+        response_mode="compact"
+        #use_async=False
     )
 
-    # 🔹 Wrap it with chat engine (THIS enables memory + follow-ups)
+    # Wrap it with chat engine (THIS enables memory + follow-ups)
     # use https://developers.llamaindex.ai/python/examples/chat_engine/chat_engine_context/ for more information
     #chat_engine = ContextChatEngine.from_defaults(
     return ContextChatEngine.from_defaults(

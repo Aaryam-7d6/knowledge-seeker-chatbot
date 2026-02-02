@@ -12,7 +12,7 @@ DATA_DIR = "./data"
 PERSIST_DIR = "./storage"
 
 def main():
-    print("📥 Loading documents...")
+    print("Loading documents...")
     documents = SimpleDirectoryReader(
         DATA_DIR,
         recursive=True
@@ -21,7 +21,7 @@ def main():
     if not documents:
         raise RuntimeError("No documents found in data directory")
 
-    print(f"✅ Loaded {len(documents)} documents")
+    print(f"Loaded {len(documents)} documents")
 
     vector_store = get_vector_store()
 
@@ -29,17 +29,17 @@ def main():
         vector_store=vector_store
     )
 
-    print("🧠 Building index...")
+    print(" Building index...")
     index = VectorStoreIndex.from_documents(
         documents,
         storage_context=storage_context,
         embed_model=get_embedding_model()
     )
 
-    print("💾 Persisting index...")
+    print(" Persisting index...")
     index.storage_context.persist(persist_dir=PERSIST_DIR)
 
-    print("🎉 Index build completed successfully")
+    print("Index build completed successfully")
 
 if __name__ == "__main__":
     main()
