@@ -29,9 +29,9 @@ Settings.node_parser = SentenceSplitter(chunk_size=512,chunk_overlap=51)
 #if "memory" not in st.session_state:
     #st.session_state.memory = ChatMemoryBuffer.from_defaults(token_limit=2006)
     
-from llama_index.core.memory import ChatMemoryBuffer
+#from llama_index.core.memory import ChatMemoryBuffer
 
-memory = ChatMemoryBuffer.from_defaults(token_limit=1500)
+#memory = ChatMemoryBuffer.from_defaults(token_limit=1500)
 
 
 
@@ -171,7 +171,7 @@ def get_query_engine(search_mode=SEARCH_MODE):
         query_engine=be1,
         retriever=fusion,
         #memory=st.session_state.memory,
-        memory=memory,
+        #memory=memory,
         chat_mode="context",
         #query = query_engine.query,
         #query = query_engine
@@ -211,7 +211,7 @@ def get_query_engine(search_mode=SEARCH_MODE):
         query_engine=base_engine,
         retriever=retriever,
         #memory=st.session_state.memory,
-        memory=memory,
+        #memory=memory,
         chat_mode="context",
         #query = query_engine.query,
         #query = query_engine

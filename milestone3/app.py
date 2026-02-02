@@ -14,10 +14,13 @@ import os
 
 from llama_index.core.memory import ChatMemoryBuffer
 
-memory = ChatMemoryBuffer.from_defaults(token_limit=1500)
+#memory = ChatMemoryBuffer.from_defaults(token_limit=15000)
 
-if memory not in st.session_state:
-    st.session_state.memory = ChatMemoryBuffer.from_defaults(token_limit = 1500)
+if "memory" not in st.session_state:
+    st.session_state.memory = ChatMemoryBuffer.from_defaults(token_limit = 15000)
+
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
 
 st.set_page_config(page_title="KnowledgeSeeker",layout="wide")
 
@@ -108,22 +111,26 @@ if not os.path.exists(os.path.join(config.STORAGE_DIR, "docstore.json")):
     st.stop()
 
 
-query = st.text_input("Ask a question based on uploaded documents:")
+#query = st.text_input("Ask a question based on uploaded documents:")
+query = st.chat_input("Ask a question based on uploaded documents")
+
 
 if query:
+    
+    st.session_state.chat_history.append({
+        "role": "user",
+        "content": query
+    })
+    
     with st.chat_message("user"):
-        st.write(query)
+        #st.write(query)
+        st.markdown(query)
 
     #response = query_engine.query(user_query)
 
-
 # i use "Using Standalone" here, for me information visit: #https://developers.llamaindex.ai/python/examples/agent/memory/chat_memory_buffer/
 
-
-
-
 #query_engine = get_query_engine(search_mode)
-
 
 #if query:
     #query_engine = get_rag_engine()
@@ -152,6 +159,15 @@ if query:
             f"(score: `{node.score:.3f}`)"
         )
 
+
+st.markdown(
+    """
+    <script>
+    window.scrollTo(0, document.body.scrollHeight);
+    </script>
+    """,
+    unsafe_allow_html=True
+)
 
 
 # from llama_index.core.llms import ChatMessage
