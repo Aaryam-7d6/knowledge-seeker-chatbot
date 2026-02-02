@@ -16,7 +16,8 @@ I assigned to a Project and this repo is part of my journey and work at internsh
 ### File Structure Understanding:
  - milestone1: Document Insertion, Indexing and Vector Storage
  - milestone2: milestone1 + llm  > Q&A in terminal
- - milestone3: A GUI webapp that contains milestone1 and milestone2.
+ - milestone3: A GUI webapp that contains milestone1 and milestone2. + Memory and follow-up questions
+ - milestone4: Deployment of Project
 
 ---
 ### Tools and Tech used:
@@ -35,6 +36,7 @@ I assigned to a Project and this repo is part of my journey and work at internsh
  - PDF
  - TXT
  - DOCS or DOX
+ - MD (Markdown)
 
 -> I use WSL (Ubuntu) as OS.
 -----
