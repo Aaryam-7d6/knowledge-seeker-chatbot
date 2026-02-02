@@ -10,4 +10,11 @@ __pycache__/*
 .ipynb_checkpoints/
 .ipynb_checkpoints/*
 .env
+*.*.xlsx:Zone.Identifier
+
+*.*.xls:Zone.Identifier
+
+.~lock.*.*.xlsx#
+
+
 
