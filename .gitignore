@@ -16,5 +16,13 @@ __pycache__/*
 
 .~lock.*.*.xlsx#
 
+/storage/*
+
+/data/*
+
+data/*
+
+storage/*
+
 
 
