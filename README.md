@@ -24,7 +24,10 @@ I assigned to a Project and this repo is part of my journey and work at internsh
  - Auto scroll to latest chat
  - auto change model when default LM models limite is reached.
  - use cand select models which one to use.
- Above listed Additional Features are avaliable in Live app, for code of these features please visit [Live Repo](https://github.com/Aaryam-7d6/knowledge-seeker-chatbot-streamlit-live)
+ Above listed Additional Features are avaliable in Live app.
+ - Hashing for the uploaded files,to reduce redundancy.
+
+For code of these features please visit [Live Repo](https://github.com/Aaryam-7d6/knowledge-seeker-chatbot-streamlit-live)
 
 ---
 ### Deployed version:
