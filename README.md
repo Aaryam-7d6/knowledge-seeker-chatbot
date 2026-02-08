@@ -18,6 +18,19 @@ I assigned to a Project and this repo is part of my journey and work at internsh
  - milestone2: milestone1 + llm  > Q&A in terminal
  - milestone3: A GUI webapp that contains milestone1 and milestone2. + Memory and follow-up questions
  - milestone4: Deployment of Project
+---
+
+### Additional Featurs:
+ - Auto scroll to latest chat
+ - auto change model when default LM models limite is reached.
+ - use cand select models which one to use.
+ Above listed Additional Features are avaliable in Live app, for code of these features please visit [Live Repo](https://github.com/Aaryam-7d6/knowledge-seeker-chatbot-streamlit-live)
+
+---
+### Deployed version:
+ - Following repo is for deployed vesrion of milestone3 is avaliable on [Live Repo](https://github.com/Aaryam-7d6/knowledge-seeker-chatbot-streamlit-live) here, i use using Streamlit cloud for deployment and Qdrant cloud cluster for storing data.
+ use can use and test the final product by visitting following link :
+ [link](https://knowledge-seeker-chatbot-app-live.streamlit.app/)
 
 ---
 ### Tools and Tech used:
@@ -30,7 +43,7 @@ I assigned to a Project and this repo is part of my journey and work at internsh
  - Conda Environment
 ---
 ### LLM used:
- - gemini-2.5-flash
+ - gemini-2.5-flash & gemini-2.5-flash-lite
 ---
 ### Filetype support:
  - PDF
