@@ -10,7 +10,6 @@
 **Submission Date:** February 09, 2026  
 **Deployment Platform:** Streamlit Cloud  
 **Vector Database:** Qdrant DB  
-**Repository:** [Base Repository](https://github.com/Aaryam-7d6/knowledge-seeker-chatbot-streamlit-live)  
 
 ---
 
@@ -259,7 +258,8 @@ User Question                                   ↓
 **Application Hosting: Streamlit Cloud**
 - **Platform:** [Streamlit Community Cloud](https://streamlit.io/cloud)
 - **Tier:** Free
-- **URL:** https://knowledge-seeker-chatbot-app-live.streamlit.app/
+- **URL:** [*Live Application*](https://knowledge-seeker-chatbot-app-live.streamlit.app/)
+
 - **Features:**
   - Automatic deployment from GitHub
   - HTTPS by default
@@ -436,9 +436,9 @@ This project successfully demonstrates a **functional RAG-based conversational A
 
 ## Repository Links
 
-- **Main Repo:** https://github.com/Aaryam-7d6/knowledge-seeker-chatbot
-- **Deployment Repo:** https://github.com/Aaryam-7d6/knowledge-seeker-chatbot-streamlit-live
-- **Live Application:** https://knowledge-seeker-chatbot-app-live.streamlit.app/
+- [*Base Repository*](https://github.com/Aaryam-7d6/knowledge-seeker-chatbot)
+- [*Deployment Repository*](https://github.com/Aaryam-7d6/knowledge-seeker-chatbot-streamlit-live)
+- [*Live Application*](https://knowledge-seeker-chatbot-app-live.streamlit.app/)
 
 ---
 
