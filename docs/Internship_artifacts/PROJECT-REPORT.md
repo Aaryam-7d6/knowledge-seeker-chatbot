@@ -443,8 +443,8 @@ This project successfully demonstrates a **functional RAG-based conversational A
 ---
 
 **Report Submitted By:**  
-Aarya R. Thakar
-Infosys Springboard Virtual Internship 6.0
+Aarya R. Thakar  
+Infosys Springboard Virtual Internship 6.0   
 
 **Submission Date:** February 09, 2026
 
