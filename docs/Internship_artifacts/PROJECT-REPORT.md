@@ -352,6 +352,19 @@ User Question                                   ↓
 - Responses are grounded in retrieved content.
 - Follow-up questions are handled correctly using session memory.
 - Here use Response Metrics, for Evaluation
+- **Accuracy Evaluation** :
+  - The system was evaluated using manually curated questions based on the uploaded documents. Answers were checked for correctness and faithfulness to the source content.
+  - Accuracy was assessed qualitatively, as the system is a Retrieval-Augmented Generation (RAG) application rather than a classification model.
+- **Retrieval Metrics** :
+  - To ensure transparency and debugging capability, the following retrieval metrics were monitored:
+     - *Chunks used per query:* 6  (By default, use can change it.)
+     - *Top similarity score:* 1.82
+     - These metrics help evaluate retrieval relevance and context quality.
+  
+ - **Response Time Statistics** :
+     - Response time was measured from user query submission to final answer generation, including retrieval and LLM inference.
+     - Response time, It is totally depend on and correlated with the attributes of the query such as Complexity, length (tokens), also prompting or asking styles.
+     - But Generally, it's between *5 - 15 seconds* for more information and stats about time, checkout :
 
 ---
 
@@ -364,6 +377,8 @@ User Question                                   ↓
 ### Screenshots:
 
 ![alt text](<imgs/Screenshot 2026-02-09 104622.png>) ![alt text](<imgs/Screenshot 2026-02-09 104648.png>) ![alt text](<imgs/Screenshot 2026-02-09 104709.png>) ![alt text](<imgs/Screenshot 2026-02-09 104719.png>) ![alt text](<imgs/Screenshot 2026-02-09 104733.png>) ![alt text](<imgs/Screenshot 2026-02-09 104848.png>) ![alt text](<imgs/Screenshot 2026-02-09 104946.png>)
+
+- Milestone 3 demonstration: [Recording](https://screenrec.com/share/2xrnw1Zoj7)
 <!--
 <details>
 <summary>Click to view application screenshots</summary>
