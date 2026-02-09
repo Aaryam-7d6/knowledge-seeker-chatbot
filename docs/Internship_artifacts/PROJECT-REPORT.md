@@ -364,7 +364,7 @@ User Question                                   ↓
  - **Response Time Statistics** :
      - Response time was measured from user query submission to final answer generation, including retrieval and LLM inference.
      - Response time, It is totally depend on and correlated with the attributes of the query such as Complexity, length (tokens), also prompting or asking styles.
-     - But Generally, it's between *5 - 15 seconds* for more information and stats about time, checkout :
+     - But Generally, it's between *5 - 15 seconds* for more information and stats about time, checkout [Pipeline Performance Characteristics](#pipeline-performance-characteristics):
 
 ---
 
