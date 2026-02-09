@@ -55,6 +55,10 @@ For code of these features please visit [Live Repo](https://github.com/Aaryam-7d
  - MD (Markdown)
 
 -> I use WSL (Ubuntu) as OS.
+----
+
+### For detailed information visit the [report](https://github.com/Aaryam-7d6/knowledge-seeker-chatbot/blob/main/docs/Internship_artifacts/PROJECT-REPORT.md)
+
 -----
 #### Note:
  - "dockerr" and "qdrant_storage" must be in same file, if you move them to another location, if not then your colloctions are not appering in list.
