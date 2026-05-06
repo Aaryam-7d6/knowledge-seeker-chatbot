@@ -1,74 +1,143 @@
-----
-# Hello,World !!!
+# Knowledge Seeker Chatbot
 
-## knowledge-seeker-chatbot
+> RAG-based conversational AI for document search and knowledge retrieval.  
+> Built during **Infosys Springboard Virtual Internship 6.0**.
 
-A RAG-based conversational AI for knowledge seekers and autodidactic learners, built as part of the Infosys Springboard Virtual Internship.
-
------
-
-Project Title : AI Based Document Search and Knowledge Retrieval with Conversational Interface
-
------
-
-I am an Intern at Infosys Springboard, under Infosys Springboard Virtual Internship 6.0 Programm.
-I assigned to a Project and this repo is part of my journey and work at internship; Stay tune for updates.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Streamlit-FF4B4B?logo=streamlit)](https://knowledge-seeker-chatbot-app-live.streamlit.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)](https://python.org)
 
 ---
-### File Structure Understanding:
- - milestone1: Document Insertion, Indexing and Vector Storage
- - milestone2: milestone1 + llm  > Q&A in terminal
- - milestone3: A GUI webapp that contains milestone1 and milestone2. + Memory and follow-up questions
- - milestone4: Deployment of Project
----
 
-### Additional Featurs:
- - Auto scroll to latest chat
- - auto change model when default LM models limite is reached.
- - use cand select models which one to use.
- Above listed Additional Features are avaliable in Live app.
- - Hashing for the uploaded files,to reduce redundancy.
+## What This Is
 
-For code of these features please visit [Live Repo](https://github.com/Aaryam-7d6/knowledge-seeker-chatbot-streamlit-live)
+Upload your documents. Ask questions. Get answers grounded in your content.
+
+This project implements a full RAG (Retrieval-Augmented Generation) pipeline —
+documents are chunked, embedded, stored in a vector database, and retrieved
+at query time to give the LLM relevant context before generating a response.
+
+Built in milestones as part of the internship program, this repo documents
+the full development journey from raw indexing to a deployed web app.
 
 ---
-### Deployed version:
- - Following repo is for deployed vesrion of milestone3 is avaliable on [Live Repo](https://github.com/Aaryam-7d6/knowledge-seeker-chatbot-streamlit-live) here, i use using Streamlit cloud for deployment and Qdrant cloud cluster for storing data.
- use can use and test the final product by visitting following link :
- [link](https://knowledge-seeker-chatbot-app-live.streamlit.app/)
+
+## Architecture
+
+```
+Documents (PDF/TXT/DOCX/MD)
+↓
+Chunking & Parsing (LlamaIndex)
+↓
+HuggingFace Embeddings
+↓
+Qdrant Vector DB (Docker)
+↓
+Retrieval at Query Time
+↓
+Gemini LLM → Response
+↓
+Streamlit Chat Interface
+
+```
+---
+
+## Milestone Breakdown
+
+| Milestone | What it does |
+|---|---|
+| `milestone1` | Document ingestion, chunking, embedding, Qdrant vector storage |
+| `milestone2` | milestone1 + LLM integration — terminal-based Q&A |
+| `milestone3` | Full Streamlit GUI — memory, follow-up questions, multi-turn chat |
+| `milestone4` | Deployment to Streamlit Cloud with Qdrant Cloud |
 
 ---
-### Tools and Tech used:
- - Docker (for running database stably and Isolatedly)
- - Qdrant  (Vector DB)
- - Python
- - Embeddings (using HuggingFace)
- - LlamaIndex (for indexing)
- - Streamlit
- - Conda Environment
+
+## Stack
+
+| Layer | Technology |
+|---|---|
+| Language | Python |
+| RAG Framework | LlamaIndex |
+| Vector DB | Qdrant (Docker — local) |
+| Embeddings | HuggingFace (`sentence-transformers`) |
+| LLM | Gemini 2.5 Flash / Flash-Lite |
+| Frontend | Streamlit |
+| Containerization | Docker |
+| Environment | Conda / WSL (Ubuntu) |
+
 ---
-### LLM used:
- - gemini-2.5-flash & gemini-2.5-flash-lite
+
+## Supported File Types
+
+`PDF` · `TXT` · `DOCX` · `MD (Markdown)`
+
 ---
-### Filetype support:
- - PDF
- - TXT
- - DOCS or DOX
- - MD (Markdown)
 
--> I use WSL (Ubuntu) as OS.
+## Local Setup
 
-----
+### Prerequisites
+- Python 3.10+
+- Docker
+- Conda (recommended)
+- Google Gemini API key
 
-### For detailed information visit:  [**_Internship Report_**](https://github.com/Aaryam-7d6/knowledge-seeker-chatbot/blob/main/docs/Internship_artifacts/PROJECT-REPORT.md)
+### Steps
 
------
-### Note:
- - "dockerr" and "qdrant_storage" must be in same file, if you move them to another location, if not then your colloctions are not appering in list.
- - For Windows users rename it as "name.ps1". I use Ubuntu (Linux) therefore some things might be differnt and need changes.
- - for any have doubt you can connect me.
- - Please feel free to share your suggestions for improvement.
+```bash
+# Clone the repo
+git clone https://github.com/Aaryam-7d6/knowledge-seeker-chatbot.git
+cd knowledge-seeker-chatbot
 
-Thank you for your precious time and have a fantastic time ahead. :)
+# Create and activate conda environment
+conda create -n knowledge-seeker python=3.10
+conda activate knowledge-seeker
 
------
+# Install dependencies
+pip install -r req.txt
+
+# Start Qdrant via Docker
+# Linux/Mac:
+bash dockerr
+# Windows: rename dockerr to dockerr.ps1 and run in PowerShell
+
+# Navigate to milestone3 and run
+cd milestone3
+streamlit run app.py
+```
+
+> **Note:** `dockerr` and `qdrant_storage` must be in the same directory.  
+> Windows users: rename `dockerr` to `dockerr.ps1` before running.
+
+---
+
+## Live Version
+
+The production-ready version with additional features is deployed separately:
+
+**→ [Live App](https://knowledge-seeker-chatbot-app-live.streamlit.app/)**  
+**→ [Live Repo](https://github.com/Aaryam-7d6/knowledge-seeker-chatbot-streamlit-live)**
+
+Additional features available in the live version:
+- Auto-scroll to latest message
+- Automatic model switching when rate limit is reached
+- User-selectable LLM model
+- File hashing to prevent redundant re-indexing
+
+---
+
+## Internship Context
+
+**Program:** Infosys Springboard Virtual Internship 6.0  
+**Project Title:** AI-Based Document Search and Knowledge Retrieval with Conversational Interface  
+**Artifacts:** Available in `docs/Internship_artifacts/`
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE)
+
+---
+
+*Built by [Aarya R. Thakar](https://www.linkedin.com/in/aaryamthakar)*
