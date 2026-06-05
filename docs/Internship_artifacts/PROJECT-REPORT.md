@@ -357,7 +357,7 @@ User Question                                   ↓
   - Accuracy was assessed qualitatively, as the system is a Retrieval-Augmented Generation (RAG) application rather than a classification model.
 - **Retrieval Metrics** :
   - To ensure transparency and debugging capability, the following retrieval metrics were monitored:
-     - *Chunks used per query:* 6  (By default, use can change it.)
+     - *Chunks used per query:* 6  (By default, user can change it.)
      - *Top similarity score:* 1.82
      - These metrics help evaluate retrieval relevance and context quality.
   
